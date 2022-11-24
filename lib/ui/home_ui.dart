@@ -90,15 +90,15 @@ class _HomeUiState extends State<HomeUi> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      // Text(
-                      //   uchurdagyDanniy.toStringAsFixed(0),
-                      //   style: const TextStyle(
-                      //       fontSize: 30,
-                      //       fontWeight: FontWeight.bold,
-                      //       color: Colors.white),
-                      // ),
+                    children: [
                       Text(
+                        uchurdagyDanniy.toStringAsFixed(0),
+                        style: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      const Text(
                         'cm',
                         style: TextStyle(
                             fontSize: 20,
