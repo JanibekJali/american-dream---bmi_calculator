@@ -133,33 +133,8 @@ class _HomeUiState extends State<HomeUi> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                      color: Colors.teal,
-                      borderRadius: BorderRadius.circular(15)),
-                  padding: const EdgeInsets.all(40),
-                  child: Column(
-                    children: const [
-                      Icon(
-                        Icons.male,
-                        size: 90,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        'Male',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                // const SizedBox(
-                //   width: 100,
-                // ),
-                Container(
                   decoration: const BoxDecoration(
-                      color: Colors.teal,
+                      color: Color(0xff4C4F5D),
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   padding: const EdgeInsets.all(40),
                   child: Column(
@@ -181,38 +156,50 @@ class _HomeUiState extends State<HomeUi> {
                       Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          InkWell(
-                            splashColor: Colors.red,
-                            onTap: () {
-                              setState(() {});
-                              age--;
-                            },
-                            child: const CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Color(0xff4C505E),
-                              child: Icon(
-                                Icons.remove,
-                                color: Color(0xffffffff),
-                                size: 35,
+                          Container(
+                            // margin: const EdgeInsets.all(5.0),
+                            decoration: const BoxDecoration(
+                                color: Color(0xff2C2C2C),
+                                shape: BoxShape.circle),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                customBorder: const CircleBorder(),
+                                splashColor: Colors.red,
+                                onTap: () {
+                                  setState(() {});
+                                  age--;
+                                },
+                                child: const Icon(
+                                  Icons.remove,
+                                  size: 54,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
                           const SizedBox(
                             width: 5,
                           ),
-                          InkWell(
-                            splashColor: Colors.red,
-                            onTap: () {
-                              setState(() {});
-                              age++;
-                            },
-                            child: const CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Color(0xff4C505E),
-                              child: Icon(
-                                Icons.add,
-                                color: Color(0xffffffff),
-                                size: 35,
+                          Container(
+                            // margin: const EdgeInsets.all(5.0),
+                            decoration: const BoxDecoration(
+                                color: Color(0xff2C2C2C),
+                                shape: BoxShape.circle),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                customBorder: const CircleBorder(),
+                                splashColor: Colors.red,
+                                onTap: () {
+                                  setState(() {});
+                                  age--;
+                                },
+                                child: const Icon(
+                                  Icons.add,
+                                  size: 54,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
