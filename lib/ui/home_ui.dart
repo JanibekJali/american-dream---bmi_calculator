@@ -105,6 +105,13 @@ class _HomeUiState extends State<HomeUi> {
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
                       ),
+                      const Text(
+                        'cm',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey),
+                      ),
                     ],
                   ),
                   SliderTheme(
