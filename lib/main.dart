@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'ui/home_ui.dart';
 
 void main() {
-  runApp(Adam());
+  runApp(MyApp());
 }
 
-class Adam extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
