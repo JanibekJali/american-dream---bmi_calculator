@@ -1,6 +1,9 @@
 import 'dart:developer';
 
+import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
+
+import '../enum/gender_enum.dart';
 
 enum Toyota {
   Corolla, // 0
@@ -14,8 +17,6 @@ int toyotaWindow = 2;
 Color activeColor = Colors.blue;
 Color inactiveColor = Colors.grey;
 
-enum Gender { male, female, none }
-
 class HomeUi extends StatefulWidget {
   @override
   State<HomeUi> createState() => _HomeUiState();
@@ -24,8 +25,8 @@ class HomeUi extends StatefulWidget {
 class _HomeUiState extends State<HomeUi> {
   Color maleColor = inactiveColor;
   Color femaleColor = inactiveColor;
-  void updateColor(Gender tandalganGender) {
-    if (tandalganGender == Gender.male) {
+  void updateColor(GenderEnum tandalganGender) {
+    if (tandalganGender == GenderEnum.male) {
       if (maleColor == inactiveColor) {
         maleColor = activeColor;
         femaleColor = inactiveColor;
@@ -33,7 +34,7 @@ class _HomeUiState extends State<HomeUi> {
         maleColor = inactiveColor;
       }
     }
-    if (tandalganGender == Gender.female) {
+    if (tandalganGender == GenderEnum.female) {
       if (femaleColor == inactiveColor) {
         femaleColor = activeColor;
         maleColor = inactiveColor;
@@ -67,7 +68,7 @@ class _HomeUiState extends State<HomeUi> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
-                  onTap: () => updateColor(Gender.male),
+                  onTap: () => updateColor(GenderEnum.male),
                   child: Container(
                     decoration: BoxDecoration(
                         color: maleColor,
@@ -96,7 +97,7 @@ class _HomeUiState extends State<HomeUi> {
                 // ),
                 InkWell(
                   onTap: () {
-                    updateColor(Gender.female);
+                    updateColor(GenderEnum.female);
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -261,82 +262,7 @@ class _HomeUiState extends State<HomeUi> {
                     ],
                   ),
                 ),
-                Container(
-                  decoration: const BoxDecoration(
-                      color: Color(0xff4C4F5D),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  padding: const EdgeInsets.all(30),
-                  child: Column(
-                    children: [
-                      const Text(
-                        'Age',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        age.toString(),
-                        style: const TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            // margin: const EdgeInsets.all(5.0),
-                            decoration: const BoxDecoration(
-                                color: Color(0xff2C2C2C),
-                                shape: BoxShape.circle),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                customBorder: const CircleBorder(),
-                                splashColor: Colors.red,
-                                onTap: () {
-                                  setState(() {});
-                                  age--;
-                                },
-                                child: const Icon(
-                                  Icons.remove,
-                                  size: 54,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Container(
-                            // margin: const EdgeInsets.all(5.0),
-                            decoration: const BoxDecoration(
-                                color: Color(0xff2C2C2C),
-                                shape: BoxShape.circle),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                customBorder: const CircleBorder(),
-                                splashColor: Colors.red,
-                                onTap: () {
-                                  setState(() {});
-                                  age--;
-                                },
-                                child: const Icon(
-                                  Icons.add,
-                                  size: 54,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+                const CustomCon(),
               ],
             ),
           ],
