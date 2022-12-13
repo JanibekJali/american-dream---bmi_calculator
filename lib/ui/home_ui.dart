@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
 
 class HomeUi extends StatefulWidget {
@@ -18,30 +19,22 @@ class _HomeUiState extends State<HomeUi> {
           style: TextStyle(fontSize: 25),
         ),
       ),
-      body: Container(
-          child: Column(
-        children: [
-          Container(
-            color: Colors.teal,
-            padding: const EdgeInsets.all(40),
-            child: Column(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Column(
+          children: [
+            Row(
               children: const [
-                Icon(
-                  Icons.male,
-                  size: 60,
-                  color: Colors.white,
+                CustomContainer(genderText: 'MalE'),
+                SizedBox(
+                  width: 10,
                 ),
-                Text(
-                  'Male',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                )
+                CustomContainer(genderText: 'Female'),
               ],
             ),
-          )
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }
