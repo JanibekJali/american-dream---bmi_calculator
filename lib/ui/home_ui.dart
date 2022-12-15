@@ -21,6 +21,7 @@ class _HomeUiState extends State<HomeUi> {
         ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -41,34 +42,143 @@ class _HomeUiState extends State<HomeUi> {
             ],
           ),
           Container(
-            color: Colors.teal,
-            child: Padding(
-              padding: const EdgeInsets.all(50.0),
-              child: Column(
-                children: [
-                  const Text(
-                    'Height',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    sliderHeight.toStringAsFixed(0),
-                    style: const TextStyle(fontSize: 70, color: Colors.white),
-                  ),
-                  Slider(
-                    activeColor: Colors.red,
-                    inactiveColor: Colors.white,
-                    thumbColor: Colors.green,
-                    max: 200,
-                    value: sliderHeight,
-                    onChanged: (adamBasti) {
-                      setState(() {
-                        sliderHeight = adamBasti;
-                      });
-                    },
-                  ),
-                ],
-              ),
+            width: 370,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.teal,
             ),
+            child: Column(
+              children: [
+                const Text(
+                  'Height',
+                  style: TextStyle(fontSize: 30),
+                ),
+                Text(
+                  sliderHeight.toStringAsFixed(0),
+                  style: const TextStyle(fontSize: 70, color: Colors.white),
+                ),
+                Slider(
+                  activeColor: Colors.red,
+                  inactiveColor: Colors.white,
+                  thumbColor: Colors.green,
+                  max: 200,
+                  value: sliderHeight,
+                  onChanged: (adamBasti) {
+                    setState(() {
+                      sliderHeight = adamBasti;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width * 0.45,
+                height: MediaQuery.of(context).size.height * 0.26,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.teal,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Weight'.toUpperCase(),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                      const Text(
+                        '60',
+                        style: TextStyle(fontSize: 60, color: Colors.white),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          CircleAvatar(
+                            radius: 30,
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.remove,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 2,
+                          ),
+                          CircleAvatar(
+                            radius: 30,
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.add,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.45,
+                height: MediaQuery.of(context).size.height * 0.26,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.teal,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Weight'.toUpperCase(),
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                      const Text(
+                        '60',
+                        style: TextStyle(fontSize: 60, color: Colors.white),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          CircleAvatar(
+                            radius: 30,
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.remove,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 2,
+                          ),
+                          CircleAvatar(
+                            radius: 30,
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.add,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),
