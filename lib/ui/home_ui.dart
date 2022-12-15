@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/widgets/custom_container.dart';
+import 'package:bmi_calculator/widgets/weight_age_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeUi extends StatefulWidget {
@@ -8,6 +9,7 @@ class HomeUi extends StatefulWidget {
 
 class _HomeUiState extends State<HomeUi> {
   double sliderHeight = 80;
+  int weight = 50;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,110 +76,22 @@ class _HomeUiState extends State<HomeUi> {
           ),
           Row(
             children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.45,
-                height: MediaQuery.of(context).size.height * 0.26,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.teal,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Weight'.toUpperCase(),
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.white),
-                      ),
-                      const Text(
-                        '60',
-                        style: TextStyle(fontSize: 60, color: Colors.white),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.remove,
-                                size: 30,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 2,
-                          ),
-                          CircleAvatar(
-                            radius: 30,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.add,
-                                size: 30,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.45,
-                height: MediaQuery.of(context).size.height * 0.26,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.teal,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Weight'.toUpperCase(),
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.white),
-                      ),
-                      const Text(
-                        '60',
-                        style: TextStyle(fontSize: 60, color: Colors.white),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.remove,
-                                size: 30,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 2,
-                          ),
-                          CircleAvatar(
-                            radius: 30,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.add,
-                                size: 30,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              )
+              WeightAgeWidget(
+                  san: weight.toString(),
+                  text: 'Weight',
+                  onTap: () {
+                    setState(() {
+                      weight = weight + 1;
+                    });
+                  }),
+              WeightAgeWidget(
+                  san: weight.toString(),
+                  text: 'Age',
+                  onTap: () {
+                    setState(() {
+                      weight = weight + 1;
+                    });
+                  }),
             ],
           ),
         ],

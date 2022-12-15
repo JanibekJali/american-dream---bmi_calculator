@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+
+class WeightAgeWidget extends StatelessWidget {
+  const WeightAgeWidget({super.key, this.text, this.onTap, this.san});
+  final String? text;
+  final String? san;
+  final void Function()? onTap;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.45,
+      height: MediaQuery.of(context).size.height * 0.26,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.teal,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Text(
+              text!.toUpperCase(),
+              style: const TextStyle(fontSize: 20, color: Colors.white),
+            ),
+            Text(
+              san!,
+              style: const TextStyle(fontSize: 60, color: Colors.white),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  child: IconButton(
+                    onPressed: onTap,
+                    icon: const Icon(
+                      Icons.remove,
+                      size: 30,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 2,
+                ),
+                CircleAvatar(
+                  radius: 30,
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.add,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
