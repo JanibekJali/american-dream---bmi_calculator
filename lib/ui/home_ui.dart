@@ -17,17 +17,17 @@ class _HomeUiState extends State<HomeUi> {
   int age = 25;
   GenderEnum male = GenderEnum.male;
   GenderEnum female = GenderEnum.female;
-  // Color maleSelected = AppColors.inactiveColor;
-  // Color femaleSelected = AppColors.inactiveColor;
+  Color maleSelected = AppColors.inactiveColor;
+  Color femaleSelected = AppColors.inactiveColor;
 
   chooseGender(GenderEnum genderUserChoose) {
     if (genderUserChoose == male) {
-      AppColors.activeColor;
-      AppColors.inactiveColor;
+      maleSelected = AppColors.activeColor;
+      femaleSelected = AppColors.inactiveColor;
     }
     if (genderUserChoose == female) {
-      AppColors.activeColor;
-      AppColors.inactiveColor;
+      femaleSelected = AppColors.activeColor;
+      maleSelected = AppColors.inactiveColor;
     }
     setState(() {});
   }
@@ -53,7 +53,7 @@ class _HomeUiState extends State<HomeUi> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 CustomContainer(
-                  color: AppColors.inactiveColor,
+                  color: maleSelected,
                   dynamicChoose: () {
                     chooseGender(male);
                     log('Knopka');
@@ -65,7 +65,7 @@ class _HomeUiState extends State<HomeUi> {
                 ),
                 CustomContainer(
                   dynamicChoose: () => chooseGender(female),
-                  color: AppColors.inactiveColor,
+                  color: femaleSelected,
                   dynamicIcon: Icons.female,
                   genderText: 'Female',
                   ver: 30,
