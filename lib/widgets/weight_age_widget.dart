@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 
 class WeightAgeWidget extends StatelessWidget {
-  const WeightAgeWidget({super.key, this.text, this.onTap, this.san});
+  const WeightAgeWidget({
+    required this.onPlus,
+    required this.onMinus,
+    super.key,
+    this.text,
+    this.san,
+  });
   final String? text;
   final String? san;
-  final void Function()? onTap;
+  final void Function()? onMinus;
+  final void Function()? onPlus;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.45,
+      width: MediaQuery.of(context).size.width * 0.40,
       height: MediaQuery.of(context).size.height * 0.26,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -32,7 +39,7 @@ class WeightAgeWidget extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   child: IconButton(
-                    onPressed: onTap,
+                    onPressed: onMinus,
                     icon: const Icon(
                       Icons.remove,
                       size: 30,
@@ -45,7 +52,7 @@ class WeightAgeWidget extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: onPlus,
                     icon: const Icon(
                       Icons.add,
                       size: 30,

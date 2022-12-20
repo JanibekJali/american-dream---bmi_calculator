@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:bmi_calculator/constants/colors/app_colors.dart';
+import 'package:bmi_calculator/enum/gender_enum.dart';
 import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:bmi_calculator/widgets/weight_age_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +14,24 @@ class HomeUi extends StatefulWidget {
 class _HomeUiState extends State<HomeUi> {
   double sliderHeight = 80;
   int weight = 50;
+  int age = 25;
+  GenderEnum male = GenderEnum.male;
+  GenderEnum female = GenderEnum.female;
+  // Color maleSelected = AppColors.inactiveColor;
+  // Color femaleSelected = AppColors.inactiveColor;
+
+  chooseGender(GenderEnum genderUserChoose) {
+    if (genderUserChoose == male) {
+      AppColors.activeColor;
+      AppColors.inactiveColor;
+    }
+    if (genderUserChoose == female) {
+      AppColors.activeColor;
+      AppColors.inactiveColor;
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,79 +44,112 @@ class _HomeUiState extends State<HomeUi> {
           style: TextStyle(fontSize: 25),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              CustomContainer(
-                genderText: 'MalE',
-                ver: 30,
-                hor: 40,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              CustomContainer(
-                genderText: 'Female',
-                ver: 30,
-                hor: 20,
-              ),
-            ],
-          ),
-          Container(
-            width: 370,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.teal,
-            ),
-            child: Column(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const Text(
-                  'Height',
-                  style: TextStyle(fontSize: 30),
-                ),
-                Text(
-                  sliderHeight.toStringAsFixed(0),
-                  style: const TextStyle(fontSize: 70, color: Colors.white),
-                ),
-                Slider(
-                  activeColor: Colors.red,
-                  inactiveColor: Colors.white,
-                  thumbColor: Colors.green,
-                  max: 200,
-                  value: sliderHeight,
-                  onChanged: (adamBasti) {
-                    setState(() {
-                      sliderHeight = adamBasti;
-                    });
+                CustomContainer(
+                  color: AppColors.inactiveColor,
+                  dynamicChoose: () {
+                    chooseGender(male);
+                    log('Knopka');
                   },
+                  dynamicIcon: Icons.male,
+                  genderText: 'MalE',
+                  ver: 30,
+                  hor: 10,
+                ),
+                CustomContainer(
+                  dynamicChoose: () => chooseGender(female),
+                  color: AppColors.inactiveColor,
+                  dynamicIcon: Icons.female,
+                  genderText: 'Female',
+                  ver: 30,
+                  hor: 10,
                 ),
               ],
             ),
+            Container(
+              width: 370,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.teal,
+              ),
+              child: Column(
+                children: [
+                  const Text(
+                    'Height',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                  Text(
+                    sliderHeight.toStringAsFixed(0),
+                    style: const TextStyle(fontSize: 50, color: Colors.white),
+                  ),
+                  Slider(
+                    activeColor: Colors.red,
+                    inactiveColor: Colors.white,
+                    thumbColor: Colors.green,
+                    max: 200,
+                    value: sliderHeight,
+                    onChanged: (adamBasti) {
+                      setState(() {
+                        sliderHeight = adamBasti;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                WeightAgeWidget(
+                    san: weight.toString(),
+                    text: 'Weight',
+                    onMinus: () {
+                      setState(() {
+                        weight--;
+                      });
+                    },
+                    onPlus: () {
+                      setState(() {
+                        weight = weight + 1;
+                      });
+                    }),
+                WeightAgeWidget(
+                    onMinus: () {
+                      setState(() {
+                        age--;
+                      });
+                    },
+                    san: age.toString(),
+                    text: 'Age',
+                    onPlus: () {
+                      setState(() {
+                        age = age + 1;
+                      });
+                    }),
+              ],
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        child: Container(
+          color: Colors.red,
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              'Esepte',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 50, color: Colors.white),
+            ),
           ),
-          Row(
-            children: [
-              WeightAgeWidget(
-                  san: weight.toString(),
-                  text: 'Weight',
-                  onTap: () {
-                    setState(() {
-                      weight = weight + 1;
-                    });
-                  }),
-              WeightAgeWidget(
-                  san: weight.toString(),
-                  text: 'Age',
-                  onTap: () {
-                    setState(() {
-                      weight = weight + 1;
-                    });
-                  }),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }
