@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:bmi_calculator/constants/colors/app_colors.dart';
 import 'package:bmi_calculator/enum/gender_enum.dart';
+import 'package:bmi_calculator/ui/result_ui.dart';
+import 'package:bmi_calculator/widgets/calculate_bottom_widget.dart';
 import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:bmi_calculator/widgets/weight_age_widget.dart';
 import 'package:flutter/material.dart';
@@ -138,18 +140,18 @@ class _HomeUiState extends State<HomeUi> {
           ],
         ),
       ),
-      bottomNavigationBar: InkWell(
-        child: Container(
-          color: Colors.red,
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Esepte',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 50, color: Colors.white),
-            ),
-          ),
-        ),
+      bottomNavigationBar: CalculateBottomWidget(
+        text: 'Sana',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: ((context) => ResultUi(
+                      height: sliderHeight,
+                      weight: weight.toDouble(),
+                    ))),
+          );
+        },
       ),
     );
   }
