@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:bmi_calculator/constants/colors/app_colors.dart';
 import 'package:bmi_calculator/enum/gender_enum.dart';
+import 'package:bmi_calculator/ui/cubit/home_cubit.dart';
 import 'package:bmi_calculator/ui/result_ui.dart';
 import 'package:bmi_calculator/widgets/calculate_bottom_widget.dart';
 import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:bmi_calculator/widgets/weight_age_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeUi extends StatefulWidget {
   @override
@@ -15,8 +17,8 @@ class HomeUi extends StatefulWidget {
 
 class _HomeUiState extends State<HomeUi> {
   double sliderHeight = 80;
-  int weight = 50;
-  int age = 25;
+  int weight = 40;
+  int age = 15;
   GenderEnum male = GenderEnum.male;
   GenderEnum female = GenderEnum.female;
   Color maleSelected = AppColors.inactiveColor;
@@ -106,36 +108,29 @@ class _HomeUiState extends State<HomeUi> {
                 ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                WeightAgeWidget(
-                    san: weight.toString(),
-                    text: 'Weight',
-                    onMinus: () {
-                      setState(() {
-                        weight--;
-                      });
-                    },
-                    onPlus: () {
-                      setState(() {
-                        weight = weight + 1;
-                      });
-                    }),
-                WeightAgeWidget(
-                    onMinus: () {
-                      setState(() {
-                        age--;
-                      });
-                    },
-                    san: age.toString(),
-                    text: 'Age',
-                    onPlus: () {
-                      setState(() {
-                        age = age + 1;
-                      });
-                    }),
-              ],
+            BlocBuilder<HomeCubit, HomeState>(
+              builder: (context, state) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    WeightAgeWidget(
+                      san: state.weightHome.toString(),
+                      text: 'Weight',
+                      onMinus: () =>
+                          context.read<HomeCubit>().weightFunction(false),
+                      onPlus: () =>
+                          context.read<HomeCubit>().weightFunction(true),
+                    ),
+                    WeightAgeWidget(
+                        onMinus: () =>
+                            context.read<HomeCubit>().ageFunction(false),
+                        san: state.ageHome.toString(),
+                        text: 'Age',
+                        onPlus: () =>
+                            context.read<HomeCubit>().ageFunction(true)),
+                  ],
+                );
+              },
             ),
           ],
         ),

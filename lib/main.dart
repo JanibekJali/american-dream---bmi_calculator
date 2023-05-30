@@ -1,4 +1,6 @@
+import 'package:bmi_calculator/ui/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'ui/home_ui.dart';
 
@@ -11,7 +13,10 @@ class BmiCalcculator extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeUi(),
+      home: BlocProvider(
+        create: (context) => HomeCubit(),
+        child: HomeUi(),
+      ),
     );
   }
 }
