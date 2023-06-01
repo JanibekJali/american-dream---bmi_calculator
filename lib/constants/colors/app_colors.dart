@@ -8,4 +8,6 @@ class AppColors {
   static const Color yellow = Colors.yellow;
   static const Color green = Colors.green;
   static const Color transparent = Colors.transparent;
+  static const Color maleSelected = AppColors.inactiveColor;
+  static const Color femaleSelected = AppColors.inactiveColor;
 }

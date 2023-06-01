@@ -16,26 +16,6 @@ class HomeUi extends StatefulWidget {
 }
 
 class _HomeUiState extends State<HomeUi> {
-  double sliderHeight = 80;
-  int weight = 40;
-  int age = 15;
-  GenderEnum male = GenderEnum.male;
-  GenderEnum female = GenderEnum.female;
-  Color maleSelected = AppColors.inactiveColor;
-  Color femaleSelected = AppColors.inactiveColor;
-
-  chooseGender(GenderEnum genderUserChoose) {
-    if (genderUserChoose == male) {
-      maleSelected = AppColors.activeColor;
-      femaleSelected = AppColors.inactiveColor;
-    }
-    if (genderUserChoose == female) {
-      femaleSelected = AppColors.activeColor;
-      maleSelected = AppColors.inactiveColor;
-    }
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,20 +69,27 @@ class _HomeUiState extends State<HomeUi> {
                     'Height',
                     style: TextStyle(fontSize: 30),
                   ),
-                  Text(
-                    sliderHeight.toStringAsFixed(0),
-                    style: const TextStyle(fontSize: 50, color: Colors.white),
+                  BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      return Text(
+                        state.sliderHeightHome!.toStringAsFixed(0),
+                        style:
+                            const TextStyle(fontSize: 50, color: Colors.white),
+                      );
+                    },
                   ),
-                  Slider(
-                    activeColor: Colors.red,
-                    inactiveColor: Colors.white,
-                    thumbColor: Colors.green,
-                    max: 200,
-                    value: sliderHeight,
-                    onChanged: (adamBasti) {
-                      setState(() {
-                        sliderHeight = adamBasti;
-                      });
+                  BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      return Slider(
+                        activeColor: Colors.red,
+                        inactiveColor: Colors.white,
+                        thumbColor: Colors.green,
+                        max: 200,
+                        value: state.sliderHeightHome!,
+                        onChanged: (adamBasti) {
+                          context.read<HomeCubit>().sliderFunction(adamBasti);
+                        },
+                      );
                     },
                   ),
                 ],
@@ -138,14 +125,14 @@ class _HomeUiState extends State<HomeUi> {
       bottomNavigationBar: CalculateBottomWidget(
         text: 'Sana',
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: ((context) => ResultUi(
-                      height: sliderHeight,
-                      weight: weight.toDouble(),
-                    ))),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //       builder: ((context) => ResultUi(
+          //             height: sliderHeight,
+          //             weight: weight.toDouble(),
+          //           ))),
+          // );
         },
       ),
     );
